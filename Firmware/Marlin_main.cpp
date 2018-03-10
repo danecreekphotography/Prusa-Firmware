@@ -2346,13 +2346,15 @@ void gcode_M701()
 	current_position[E_AXIS] += 70;
 	plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS], 400 / 60, active_extruder); //fast sequence
 
-	current_position[E_AXIS] += 25;
+	current_position[E_AXIS] += 50; // Was 25. Doubling so I don't have to sit at the printer and run the load command twice every time.
 	plan_buffer_line(current_position[X_AXIS], current_position[Y_AXIS], current_position[Z_AXIS], current_position[E_AXIS], 100 / 60, active_extruder); //slow sequence
 	st_synchronize();
 
+#ifdef ENABLE_BEEPS
 	tone(BEEPER, 500);
 	delay_keep_alive(50);
 	noTone(BEEPER);
+#endif
 
 	if (!farm_mode && loading_flag) {
 		bool clean = lcd_show_fullscreen_message_yes_no_and_wait_P(MSG_FILAMENT_CLEAN, false, true);

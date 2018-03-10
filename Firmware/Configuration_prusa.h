@@ -26,6 +26,11 @@
 //#define E3D_PT100_BED_WITH_AMP
 //#define E3D_PT100_BED_NO_AMP
 
+/*------------------------------------
+USER-SPECIFIC CONFIGURATIONS
+ *------------------------------------*/
+
+// #define ENABLE_BEEPS
 
 /*------------------------------------
  AXIS SETTINGS
